@@ -15,11 +15,11 @@ class Object
   alias_method :original_module_method_missing, :method_missing
   def method_missing(method, *args, &block)
     self.class.define_method_blocks ||= {}
-    if self.class.define_method_blocks.include?(method)
+    if self.class.define_method_blocks && self.class.define_method_blocks.include?(method)
       return self.class.define_method_blocks[method].call(*args)
     else
       self.class.ancestors.each do |clazz|
-        if clazz.define_method_blocks.include?(method)
+        if clazz.define_method_blocks && clazz.define_method_blocks.include?(method)
           return clazz.define_method_blocks[method].call(*args)
         end
       end

@@ -1,7 +1,12 @@
 class Module
-  def define_method(name, &blk)
+  def define_method(name, *args, &blk)
     @define_method_blocks ||= {}
-    @define_method_blocks[name] = lambda(&blk)
+
+    if args.count > 0
+      @define_method_blocks[name] = args[0]
+    elsif 
+      @define_method_blocks[name] = lambda(&blk)
+    end
   end
 end
 

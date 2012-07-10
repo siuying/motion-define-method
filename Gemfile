@@ -1,5 +1,4 @@
 source :rubygems
 
-group :development do 
-  gem 'motion-redgreen'
-end
+# Specify your gem's dependencies in bubble-wrap.gemspec
+gemspec
